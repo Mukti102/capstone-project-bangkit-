@@ -5,13 +5,12 @@ import cardImg from "../assets/card.jpeg";
 import { HiCheck, HiClock } from "react-icons/hi";
 import { FiTrendingUp } from "react-icons/fi";
 import { Badge, Rating } from "flowbite-react";
-import { getPhoto } from "../utils/getPhoto";
 
 export default function Card({ data }) {
   return (
     <a
       href={data ? `/detail/${data["Place ID"]}` : "#"}
-      className="w-[362px] group  h-[379px] relative"
+      className="w-[360px] group  h-[379px] relative"
     >
       <div className="w-[362px] h-[379px] px-[13px] py-[15px] left-0 top-0 absolute bg-white group-hover:bg-gray-50 rounded-[22px] shadow flex-col justify-start items-start gap-2.5 inline-flex">
         <div className="w-full  h-[209px] rounded-3xl overflow-hidden">

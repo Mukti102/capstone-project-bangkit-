@@ -1,0 +1,14 @@
+runtime: nodejs18
+instance_class: F2
+env: standard
+
+handlers:
+  # Tangani file statis di folder assets
+  - url: /assets
+    static_dir: dist/assets
+
+  # Tangani semua rute lain dan arahkan ke index.html
+  - url: /.*
+    static_files: dist/index.html
+    upload: dist/index.html
+    secure: never

@@ -24,19 +24,21 @@ export default function InputSearch({ setInputSearch, onSubmit }) {
         (error) => {
           switch (error.code) {
             case error.PERMISSION_DENIED:
-              alert("User denied the request for Geolocation.");
+              alert("Pengguna menolak izin lokasi.");
               break;
             case error.POSITION_UNAVAILABLE:
-              alert("Location information is unavailable.");
+              alert("Informasi lokasi tidak tersedia.");
               break;
             case error.TIMEOUT:
-              alert("The request to get user location timed out.");
+              alert(
+                "Permintaan untuk mendapatkan lokasi pengguna telah melebihi batas waktu."
+              );
               break;
             case error.UNKNOWN_ERROR:
-              alert("An unknown error occurred.");
+              alert("Terjadi kesalahan yang tidak diketahui.");
               break;
             default:
-              alert("An error occurred while fetching location.");
+              alert("Terjadi kesalahan saat mengambil lokasi.");
           }
         }
       );

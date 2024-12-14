@@ -3,6 +3,7 @@ import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import "leaflet-routing-machine";
+import { useStore } from "../store/store";
 
 // Komponen untuk menambahkan rute
 function Routing({ start, end }) {
@@ -14,7 +15,11 @@ function Routing({ start, end }) {
     const routingControl = L.Routing.control({
       waypoints: [L.latLng(start[0], start[1]), L.latLng(end[0], end[1])],
       routeWhileDragging: true, // Memungkinkan pengeditan rute secara interaktif
-      show: false,
+      show: true,
+      addWaypoints: false,
+      lineOptions: {
+        styles: [{ color: "blue", opacity: 1, weight: 4 }],
+      },
     }).addTo(map);
 
     return () => map.removeControl(routingControl); // Hapus kontrol saat komponen di-unmount
@@ -23,9 +28,12 @@ function Routing({ start, end }) {
   return null;
 }
 
-export default function MapPlace() {
-  const position = [51.505, -0.09]; // Titik awal
-  const target = [51.51, -0.1]; // Titik tujuan
+export default function MapPlace({ data }) {
+  const dataUser = useStore((state) => state.dataUser);
+  const coordinateTarget = data.Coordinate?.replace(/'/g, '"');
+  const dataTarget = coordinateTarget && JSON.parse(coordinateTarget);
+  const position = dataUser ? [dataUser.lat, dataUser.lon] : [51.505, -0.09]; // Titik awal
+  const target = dataTarget ? [dataTarget.lat, dataTarget.lng] : [51.51, -0.1]; // Titik tujuan
 
   return (
     <>

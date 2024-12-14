@@ -85,7 +85,7 @@ export default function Home() {
             <h1 className="text-2xl">{error}</h1>
           </div>
         ) : dataFiltered?.length > 0 ? (
-          <div className="grid xl:grid-cols-3 lg:grid-cols-2 gap-10 w-[90%] mx-auto mt-9">
+          <div className="grid xl:grid-cols-3 lg:grid-cols-2  gap-10 w-[90%] mx-auto mt-9">
             {dataFiltered.map((data) => (
               <Card key={data["Place ID"]} data={data} />
             ))}

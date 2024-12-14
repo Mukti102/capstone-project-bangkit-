@@ -11,7 +11,6 @@ import img4 from "../assets/slider/4.jpg";
 import { useParams } from "react-router";
 import api from "../service/api";
 import MapPlace from "../components/MapPlace";
-import { getPhoto } from "../utils/getPhoto";
 import { useStore } from "../store/store";
 import { limitArray } from "../utils/LimitData";
 
@@ -126,7 +125,7 @@ export default function Detail() {
           {/* right */}
           <div className="">
             {/* map */}
-            <MapPlace />
+            <MapPlace data={singleData} />
             {/* others */}
             <div className="mt-10">
               <h5 className="sm:text-3xl text-xl font-bold tracking-tight text-gray-900 dark:text-white">
